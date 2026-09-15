@@ -1,0 +1,52 @@
+title: Программирование на C
+description: Лабораторные работы НГУ — Git, сборка, тестирование и стиль кода.
+lang: ru
+url: https://lupusomniator.github.io
+baseurl: /nsu-c-course
+theme: just-the-docs
+
+plugins:
+  - jekyll-relative-links
+  - jekyll-seo-tag
+
+relative_links:
+  enabled: true
+  collections: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  rel_url: false
+
+heading_anchors: true
+enable_copy_code_button: true
+back_to_top: true
+back_to_top_text: Наверх
+aux_links:
+  Репозиторий курса:
+    - https://github.com/lupusomniator/nsu-c-course
+
+gh_edit_link: true
+gh_edit_link_text: Открыть исходник на GitHub
+gh_edit_repository: https://github.com/lupusomniator/nsu-c-course
+gh_edit_branch: main
+gh_edit_view_mode: blob
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - SITE_SETUP.md
+  - scripts
+  - vendor
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
