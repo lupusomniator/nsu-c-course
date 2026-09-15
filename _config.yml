@@ -4,6 +4,7 @@ lang: ru
 url: https://lupusomniator.github.io
 baseurl: /nsu-c-course
 theme: just-the-docs
+color_scheme: dark
 
 plugins:
   - jekyll-relative-links
