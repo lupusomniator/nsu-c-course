@@ -1,6 +1,7 @@
 ---
 title: Настройка редактора
-nav_order: 3
+parent: Начало работы
+nav_order: 1
 permalink: /ide/
 ---
 

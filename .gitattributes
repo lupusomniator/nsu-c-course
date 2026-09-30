@@ -1,0 +1,3 @@
+# Preserve test bytes, including significant spaces and missing final newlines.
+practice/**/tests/*.in -text
+practice/**/tests/*.out -text

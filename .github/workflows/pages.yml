@@ -15,6 +15,34 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  practice:
+    name: C solutions (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check practice sources and examples
+        run: python scripts/check_practice.py
+      - name: Build stubs and test all solutions (Linux)
+        if: runner.os == 'Linux'
+        run: python scripts/check_practice.py --build
+      - name: Build stubs and test all solutions (Windows, NMake)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $vsPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if (-not $vsPath) { throw "MSVC Build Tools not found" }
+          & "$vsPath\Common7\Tools\Launch-VsDevShell.ps1" -Arch amd64 -HostArch amd64 -SkipAutomaticLocation
+          $env:CMAKE_GENERATOR = "NMake Makefiles"
+          python scripts/check_practice.py --build
+          exit $LASTEXITCODE
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +64,7 @@ jobs:
 
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
+    needs: [build, practice]
     runs-on: ubuntu-latest
     permissions:
       pages: write

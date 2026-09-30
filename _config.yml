@@ -1,5 +1,5 @@
 title: Программирование на C
-description: Лабораторные работы НГУ — Git, сборка, тестирование и стиль кода.
+description: Курс программирования на Си — задачи, разборы, тесты и учебные материалы.
 lang: ru
 url: https://lupusomniator.github.io
 baseurl: /nsu-c-course
@@ -45,6 +45,14 @@ exclude:
   - SITE_SETUP.md
   - scripts
   - vendor
+  - "**/build*"
+  - "**/cmake-build-*"
+  - "**/CMakeLists.txt"
+  - "**/tests"
+  - "**/main.c"
+  - "**/solution.c"
+  - "**/explanation.md"
+  - practice/cmake
 
 defaults:
   - scope:

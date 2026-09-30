@@ -1,6 +1,7 @@
 ---
 title: Стиль кода
-nav_order: 5
+parent: Начало работы
+nav_order: 4
 permalink: /codestyle/
 ---
 

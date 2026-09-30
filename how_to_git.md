@@ -1,6 +1,7 @@
 ---
-title: Сдача лабораторных
-nav_order: 2
+title: Работа с Git и сдача работ
+parent: Начало работы
+nav_order: 3
 permalink: /git/
 ---
 
