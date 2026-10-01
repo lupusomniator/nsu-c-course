@@ -3,6 +3,15 @@ include_guard(GLOBAL)
 option(COURSE_USE_SOLUTIONS "Build solution.c instead of the student's main.c" OFF)
 
 function(add_course_task target comparison)
+    set(checker "")
+    if(comparison STREQUAL "float")
+        if(NOT TARGET course_float_checker)
+            add_executable(course_float_checker "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/CompareFloat.c")
+            set_target_properties(course_float_checker PROPERTIES
+                C_STANDARD 17 C_STANDARD_REQUIRED YES C_EXTENSIONS NO)
+        endif()
+        set(checker "$<TARGET_FILE:course_float_checker>")
+    endif()
     if(COURSE_USE_SOLUTIONS)
         set(source solution.c)
     else()
@@ -10,6 +19,9 @@ function(add_course_task target comparison)
     endif()
     message(STATUS "${target}: ${source}")
     add_executable(${target} "${source}")
+    if(comparison STREQUAL "float")
+        add_dependencies(${target} course_float_checker)
+    endif()
     set_target_properties(${target} PROPERTIES
         C_STANDARD 17 C_STANDARD_REQUIRED YES C_EXTENSIONS NO)
     if(MSVC)
@@ -42,6 +54,7 @@ function(add_course_task target comparison)
                 "-DINPUT=${input}"
                 "-DEXPECTED=${expected}"
                 "-DMODE=${comparison}"
+                "-DCHECKER=${checker}"
                 -P "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/RunTest.cmake")
         set_tests_properties("${target}.${case_name}" PROPERTIES TIMEOUT 5)
     endforeach()

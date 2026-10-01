@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.21)
+project(homework_0 LANGUAGES C)
+enable_testing()
+add_subdirectory(A-countdown)
+add_subdirectory(B-calibration)
+add_subdirectory(C-ascii)

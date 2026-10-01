@@ -54,6 +54,34 @@ def run(*command):
     subprocess.run(command, check=True)
 
 
+def check_float_checker(build):
+    checkers = [path for path in Path(build).rglob("course_float_checker*")
+                if path.is_file() and path.name in ("course_float_checker", "course_float_checker.exe")]
+    cases = [
+        ("26.20", "26.20", True),
+        (" 26.2\r\n", "26.20", True),
+        ("-0.00", "0.00", True),
+        ("13.33009", "13.33", True),
+        ("26.2001", "26.20", True),
+        ("26.1999", "26.20", True),
+        ("26.20011", "26.20", False),
+        ("26.19989", "26.20", False),
+        ("26.21", "26.20", False),
+        ("26.20 0", "26.20", False),
+        ("26.20x", "26.20", False),
+        ("", "0.00", False),
+        ("nan", "0.00", False),
+        ("inf", "0.00", False),
+        ("1e9999", "0.00", False),
+    ]
+    for checker in checkers:
+        for actual, expected, accepted in cases:
+            result = subprocess.run([str(checker), actual, expected], check=False)
+            if result.returncode != (0 if accepted else 1):
+                raise SystemExit(f"Float checker error for {actual!r} against {expected!r}")
+        print(f"Checked {len(cases)} float checker edge cases.", flush=True)
+
+
 def check_builds(groups):
     # Fresh paths catch missing files and do not use the teacher's local builds.
     with tempfile.TemporaryDirectory(prefix="course practice ") as directory:
@@ -66,6 +94,7 @@ def check_builds(groups):
                 if mode == "ON":
                     run("ctest", "--test-dir", build, "-C", "Debug",
                         "--output-on-failure", "--no-tests=error")
+                    check_float_checker(build)
             # Each task must also work when opened as an independent IDE project.
             for condition in sorted(group.glob("*/condition.md")):
                 build = str(Path(directory) / f"task-{number}-{condition.parent.name}")
