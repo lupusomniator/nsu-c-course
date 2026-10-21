@@ -229,7 +229,10 @@ typedef struct TSegment {
 } TSegment;
 
 TSegment segment = {.begin = {1, 2}, .end = {4, 6}};
-TPoint points[] = {{1, 2}, {3, 4}};
+TPoint points[] = {
+    {1, 2},
+    {3, 4}
+};
 // segment.begin.x == 1; points[1].y == 4
 ```
 
