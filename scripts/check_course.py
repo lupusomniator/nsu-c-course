@@ -120,6 +120,8 @@ def check_builds(examples):
                 command = compiler + ["/nologo", "/TC", "/std:c17", "/W4", "/WX", "/utf-8"]
                 # Microsoft recommends its own nonstandard I/O API; teach standard C here.
                 command += ["/D_CRT_SECURE_NO_WARNINGS"]
+                # Some examples deliberately demonstrate constructs warned about by MSVC.
+                command += [f"/wd{code}" for code in example.get("msvc_disabled_warnings", [])]
                 command += [f"/D{value}" for value in example.get("defines", [])]
                 command += sources + [f"/Fe:{executable}"]
             else:
@@ -143,7 +145,7 @@ def check_builds(examples):
                         raise SystemExit(f"Unexpected file content: {example['id']}/{name}")
                 cases += 1
             print(f"Built and ran {example['id']}.", flush=True)
-    print(f"Checked {cases} runs; all compiler warnings are treated as errors.")
+    print(f"Checked {cases} runs; enabled compiler warnings are treated as errors.")
 
 
 if __name__ == "__main__":

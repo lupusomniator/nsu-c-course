@@ -329,6 +329,7 @@
   },
   {
     "id": "stackFrames",
+    "msvc_disabled_warnings": [4456],
     "sources": [
       "materials/examples/stackFrames.c"
     ],
