@@ -355,6 +355,7 @@
   },
   {
     "id": "structLayout",
+    "msvc_disabled_warnings": [4121],
     "sources": [
       "materials/examples/structLayout.c"
     ],
