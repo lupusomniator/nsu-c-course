@@ -29,6 +29,11 @@ jobs:
           python-version: '3.12'
       - name: Check practice sources and examples
         run: python scripts/check_practice.py
+      - name: Check textbook structure and examples
+        run: python scripts/check_course.py
+      - name: Build and run textbook examples (Linux)
+        if: runner.os == 'Linux'
+        run: python scripts/check_course.py --build
       - name: Build stubs and test all solutions (Linux)
         if: runner.os == 'Linux'
         run: python scripts/check_practice.py --build
@@ -41,6 +46,8 @@ jobs:
           & "$vsPath\Common7\Tools\Launch-VsDevShell.ps1" -Arch amd64 -HostArch amd64 -SkipAutomaticLocation
           $env:CMAKE_GENERATOR = "NMake Makefiles"
           python scripts/check_practice.py --build
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python scripts/check_course.py --build
           exit $LASTEXITCODE
 
   build:

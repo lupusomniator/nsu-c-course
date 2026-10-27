@@ -29,19 +29,20 @@ typedef struct TPack2Sample {
 } TPack2Sample;
 #pragma pack(pop)
 
-// Макрос принимает имя типа, а не вычисляемое выражение.
-#define PRINT_LAYOUT(type) do { \
-    printf("%s: size=%zu align=%zu; kind=%zu value=%zu status=%zu\n", \
-           #type, sizeof(type), _Alignof(type), offsetof(type, kind), \
-           offsetof(type, value), offsetof(type, status)); \
-} while (0)
-
 int main(void) {
     printf("char: size=%zu align=%zu; int: size=%zu align=%zu\n",
            sizeof(char), _Alignof(char), sizeof(int), _Alignof(int));
-    PRINT_LAYOUT(TSample);
-    PRINT_LAYOUT(TCompactSample);
-    PRINT_LAYOUT(TPackedSample);
-    PRINT_LAYOUT(TPack2Sample);
+    printf("TSample: size=%zu align=%zu; kind=%zu value=%zu status=%zu\n",
+           sizeof(TSample), _Alignof(TSample), offsetof(TSample, kind),
+           offsetof(TSample, value), offsetof(TSample, status));
+    printf("TCompactSample: size=%zu align=%zu; kind=%zu value=%zu status=%zu\n",
+           sizeof(TCompactSample), _Alignof(TCompactSample), offsetof(TCompactSample, kind),
+           offsetof(TCompactSample, value), offsetof(TCompactSample, status));
+    printf("TPackedSample: size=%zu align=%zu; kind=%zu value=%zu status=%zu\n",
+           sizeof(TPackedSample), _Alignof(TPackedSample), offsetof(TPackedSample, kind),
+           offsetof(TPackedSample, value), offsetof(TPackedSample, status));
+    printf("TPack2Sample: size=%zu align=%zu; kind=%zu value=%zu status=%zu\n",
+           sizeof(TPack2Sample), _Alignof(TPack2Sample), offsetof(TPack2Sample, kind),
+           offsetof(TPack2Sample, value), offsetof(TPack2Sample, status));
     return 0;
 }

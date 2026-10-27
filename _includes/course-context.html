@@ -1,0 +1,4 @@
+{% assign chapter = site.data.course | where: 'id', page.lesson | first %}
+{% if chapter %}
+<p class="text-small text-grey-dk-100">{{ chapter.part }} · Глава {{ page.nav_order }} из {{ site.data.course.size }}</p>
+{% endif %}

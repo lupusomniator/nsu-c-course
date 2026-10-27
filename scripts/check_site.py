@@ -8,6 +8,8 @@ import re
 import sys
 from urllib.parse import unquote, urlsplit
 
+from check_course import ROOT, included_sources, load_course
+
 
 class Page(HTMLParser):
     def __init__(self, path):
@@ -19,10 +21,19 @@ class Page(HTMLParser):
         self.in_pre = False
         self.in_summary = False
         self.open_details = 0
+        self.in_course_nav = False
+        self.course_links = []
+        self.course_neighbors = {}
         self.feed(path.read_text(encoding="utf-8"))
 
     def handle_starttag(self, tag, attributes):
         attributes = dict(attributes)
+        if tag == "nav" and attributes.get("aria-label") == "Главы курса":
+            self.in_course_nav = True
+        if tag == "a" and self.in_course_nav:
+            self.course_links.append(attributes.get("href"))
+            if attributes.get("rel") in ("prev", "next"):
+                self.course_neighbors[attributes["rel"]] = attributes.get("href")
         if tag == "pre":
             self.in_pre = True
             self.code_blocks.append("")
@@ -38,6 +49,8 @@ class Page(HTMLParser):
             self.links.append(attributes[key])
 
     def handle_endtag(self, tag):
+        if tag == "nav":
+            self.in_course_nav = False
         if tag == "pre":
             self.in_pre = False
         if tag == "summary":
@@ -88,7 +101,29 @@ def main():
                     errors.append(f"{source.relative_to(root)}: missing section: {href}")
             checked += 1
 
-    sources = Path(__file__).resolve().parents[1] / "practice"
+    course = load_course()
+    for index, chapter in enumerate(course):
+        target = root / chapter["url"].strip("/") / "index.html"
+        page = pages.get(target)
+        if page is None:
+            errors.append(f"Missing chapter: {target}")
+            continue
+        expected_neighbors = {}
+        if index:
+            expected_neighbors["prev"] = base + course[index - 1]["url"]
+        if index + 1 < len(course):
+            expected_neighbors["next"] = base + course[index + 1]["url"]
+        if page.course_neighbors != expected_neighbors:
+            errors.append(f"Wrong reading navigation: {target}")
+        for url in ("/", "/materials/glossary/"):
+            if base + url not in page.course_links:
+                errors.append(f"Missing course navigation link {url}: {target}")
+        for source in included_sources(ROOT / chapter["path"]):
+            code = source.read_text(encoding="utf-8").rstrip()
+            if not any(block.rstrip() == code for block in page.code_blocks):
+                errors.append(f"{target}: rendered example differs from {source}")
+
+    sources = ROOT / "practice"
     tasks = sorted(sources.glob("*/*/*/condition.md"))
     for condition in tasks:
         match = re.search(r"^permalink: (/\S+)$", condition.read_text(encoding="utf-8"), re.M)
@@ -109,11 +144,17 @@ def main():
             errors.append(f"{target}: missing macOS/Linux disclosure")
     if list(root.rglob("tests/*.in")) or list(root.rglob("CMakeLists.txt")):
         errors.append("Test/build files should stay in the repository, not the rendered site")
+    for removed in ("drafts", "materials/details", "materials/guide/files",
+                    "materials/guide/algorithms", "materials/guide/examples/files.c",
+                    "materials/guide/examples/search.c"):
+        if (root / removed).exists():
+            errors.append(f"Deferred or retired material should not be published: {removed}")
 
     if errors:
         raise SystemExit("\n".join(errors))
     print(f"Checked {checked} internal links/assets across {len(pages)} HTML pages.")
     print(f"Checked rendered solutions and disclosures for {len(tasks)} task pages.")
+    print(f"Checked navigation and rendered examples for {len(course)} textbook chapters.")
 
 
 if __name__ == "__main__":

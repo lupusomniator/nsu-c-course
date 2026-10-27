@@ -1,0 +1,13 @@
+{% assign destination = page.redirect_to | default: '/' %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Переход на главную</title>
+  <meta http-equiv="refresh" content="0; url={{ destination | relative_url }}">
+  <link rel="canonical" href="{{ destination | absolute_url }}">
+</head>
+<body>
+  <p><a href="{{ destination | relative_url }}">Материалы курса</a></p>
+</body>
+</html>

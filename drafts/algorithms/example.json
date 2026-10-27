@@ -1,0 +1,11 @@
+{
+  "id": "search",
+  "sources": [
+    "materials/guide/examples/search.c"
+  ],
+  "cases": [
+    {
+      "output": "linear: 1\nbinary: 1\nmissing: 0\n"
+    }
+  ]
+}

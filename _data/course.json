@@ -1,0 +1,198 @@
+[
+  {
+    "id": "first-program",
+    "title": "Первая программа",
+    "part": "Первые шаги",
+    "requires": [],
+    "summary": "Исходный файл, компилятор, запуск и сообщения об ошибках.",
+    "path": "materials/guide/first-program.md",
+    "url": "/materials/guide/first-program/"
+  },
+  {
+    "id": "values",
+    "title": "Переменные и вычисления",
+    "part": "Первые шаги",
+    "requires": [
+      "first-program"
+    ],
+    "summary": "Значение, тип, присваивание и арифметика.",
+    "path": "materials/guide/values.md",
+    "url": "/materials/guide/values/"
+  },
+  {
+    "id": "conditions",
+    "title": "Условия и выбор",
+    "part": "Первые шаги",
+    "requires": [
+      "values"
+    ],
+    "summary": "Сравнения, логические операции и ветвление.",
+    "path": "materials/guide/conditions.md",
+    "url": "/materials/guide/conditions/"
+  },
+  {
+    "id": "input",
+    "title": "Ввод данных",
+    "part": "Первые шаги",
+    "requires": [
+      "conditions"
+    ],
+    "summary": "Чтение чисел, адрес переменной и проверка результата ввода.",
+    "path": "materials/guide/input.md",
+    "url": "/materials/guide/input/"
+  },
+  {
+    "id": "loops",
+    "title": "Циклы и состояние программы",
+    "part": "Первые шаги",
+    "requires": [
+      "input"
+    ],
+    "summary": "Повторение действий, счётчики и накопление результата.",
+    "path": "materials/guide/loops.md",
+    "url": "/materials/guide/loops/"
+  },
+  {
+    "id": "functions",
+    "title": "Функции",
+    "part": "Работа с данными",
+    "requires": [
+      "loops"
+    ],
+    "summary": "Параметры, возвращаемое значение и локальные переменные.",
+    "path": "materials/guide/functions.md",
+    "url": "/materials/guide/functions/"
+  },
+  {
+    "id": "arrays",
+    "title": "Массивы",
+    "part": "Работа с данными",
+    "requires": [
+      "functions"
+    ],
+    "summary": "Индексы, границы и обработка набора значений.",
+    "path": "materials/guide/arrays.md",
+    "url": "/materials/guide/arrays/"
+  },
+  {
+    "id": "strings",
+    "title": "Символы и строки",
+    "part": "Работа с данными",
+    "requires": [
+      "arrays",
+      "input"
+    ],
+    "summary": "Символ, завершающий ноль и чтение строки.",
+    "path": "materials/guide/strings.md",
+    "url": "/materials/guide/strings/"
+  },
+  {
+    "id": "pointers",
+    "title": "Адреса и указатели",
+    "part": "Работа с данными",
+    "requires": [
+      "arrays",
+      "functions"
+    ],
+    "summary": "От адреса объекта до указателей на массивы, универсального swap и int**.",
+    "path": "materials/guide/pointers.md",
+    "url": "/materials/guide/pointers/"
+  },
+  {
+    "id": "lifetime",
+    "title": "Область видимости и время жизни",
+    "part": "Вызовы и время жизни",
+    "requires": [
+      "pointers"
+    ],
+    "summary": "Области видимости, время хранения и модель стекового кадра.",
+    "path": "materials/guide/lifetime.md",
+    "url": "/materials/guide/lifetime/"
+  },
+  {
+    "id": "recursion",
+    "title": "Рекурсия",
+    "part": "Вызовы и время жизни",
+    "requires": [
+      "functions",
+      "lifetime"
+    ],
+    "summary": "Цепочка вызовов, базовый случай и возврат результата.",
+    "path": "materials/guide/recursion.md",
+    "url": "/materials/guide/recursion/"
+  },
+  {
+    "id": "integers",
+    "title": "Целые числа и биты",
+    "part": "Представление данных",
+    "requires": [
+      "values",
+      "pointers"
+    ],
+    "summary": "Двоичная запись, дополнительный код, продвижения типов и порядок байтов.",
+    "path": "materials/guide/integers.md",
+    "url": "/materials/guide/integers/"
+  },
+  {
+    "id": "floating-point",
+    "title": "Дробные числа и точность",
+    "part": "Представление данных",
+    "requires": [
+      "integers"
+    ],
+    "summary": "Перевод дробей, IEEE 754, округление и точность вычислений.",
+    "path": "materials/guide/floating-point.md",
+    "url": "/materials/guide/floating-point/"
+  },
+  {
+    "id": "records",
+    "title": "Структуры и перечисления",
+    "part": "Устройство программы",
+    "requires": [
+      "strings",
+      "pointers",
+      "integers",
+      "floating-point"
+    ],
+    "summary": "От полей и копирования до выравнивания, pack и формата байтов.",
+    "path": "materials/guide/records.md",
+    "url": "/materials/guide/records/"
+  },
+  {
+    "id": "modules",
+    "title": "Программа из нескольких файлов",
+    "part": "Устройство программы",
+    "requires": [
+      "lifetime",
+      "records"
+    ],
+    "summary": "Объявления, определения, заголовки и компоновка.",
+    "path": "materials/guide/modules.md",
+    "url": "/materials/guide/modules/"
+  },
+  {
+    "id": "memory",
+    "title": "Динамическая память",
+    "part": "Устройство программы",
+    "requires": [
+      "modules",
+      "pointers",
+      "lifetime"
+    ],
+    "summary": "Владение памятью, растущий массив, realloc и массивы переменной длины.",
+    "path": "materials/guide/memory.md",
+    "url": "/materials/guide/memory/"
+  },
+  {
+    "id": "preprocessor",
+    "title": "Препроцессор и макросы",
+    "part": "Устройство программы",
+    "requires": [
+      "modules",
+      "memory"
+    ],
+    "summary": "Подстановка, побочные эффекты, составные макросы и порядок раскрытия.",
+    "path": "materials/guide/preprocessor.md",
+    "url": "/materials/guide/preprocessor/"
+  }
+]

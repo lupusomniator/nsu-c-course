@@ -1,0 +1,14 @@
+{
+  "id": "files",
+  "sources": [
+    "materials/guide/examples/files.c"
+  ],
+  "cases": [
+    {
+      "output": "Hello, file!\n",
+      "files": {
+        "course-note.txt": "Hello, file!\n"
+      }
+    }
+  ]
+}

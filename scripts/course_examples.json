@@ -1,0 +1,391 @@
+[
+  {
+    "id": "hello",
+    "sources": [
+      "materials/guide/examples/hello.c"
+    ],
+    "cases": [
+      {
+        "output": "Hello, C!\n"
+      }
+    ]
+  },
+  {
+    "id": "values",
+    "sources": [
+      "materials/guide/examples/values.c"
+    ],
+    "cases": [
+      {
+        "output": "90\n60\n2 90\n"
+      }
+    ]
+  },
+  {
+    "id": "conditions",
+    "sources": [
+      "materials/guide/examples/conditions.c"
+    ],
+    "cases": [
+      {
+        "output": "Freezing\n"
+      }
+    ]
+  },
+  {
+    "id": "readNumber",
+    "sources": [
+      "materials/guide/examples/readNumber.c"
+    ],
+    "cases": [
+      {
+        "output": "Next: 13\n",
+        "input": "12\n"
+      },
+      {
+        "input": "cat\n",
+        "output": "Expected an integer\n",
+        "exit": 1
+      },
+      {
+        "input": "",
+        "output": "Expected an integer\n",
+        "exit": 1
+      },
+      {
+        "input": "0\n",
+        "output": "Next: 1\n"
+      },
+      {
+        "input": "100\n",
+        "output": "Next: 101\n"
+      },
+      {
+        "input": "-1\n",
+        "output": "Expected a value from 0 to 100\n",
+        "exit": 1
+      },
+      {
+        "input": "101\n",
+        "output": "Expected a value from 0 to 100\n",
+        "exit": 1
+      }
+    ]
+  },
+  {
+    "id": "loops",
+    "sources": [
+      "materials/guide/examples/loops.c"
+    ],
+    "cases": [
+      {
+        "output": "10\n"
+      }
+    ]
+  },
+  {
+    "id": "functions",
+    "sources": [
+      "materials/guide/examples/functions.c"
+    ],
+    "cases": [
+      {
+        "output": "10 11\n"
+      }
+    ]
+  },
+  {
+    "id": "arrays",
+    "sources": [
+      "materials/guide/examples/arrays.c"
+    ],
+    "cases": [
+      {
+        "output": "sum=18, count=4\n"
+      }
+    ]
+  },
+  {
+    "id": "strings",
+    "sources": [
+      "materials/guide/examples/strings.c"
+    ],
+    "cases": [
+      {
+        "output": "cat: 3\nCat\n"
+      }
+    ]
+  },
+  {
+    "id": "pointers",
+    "sources": [
+      "materials/guide/examples/pointers.c"
+    ],
+    "cases": [
+      {
+        "output": "3 8\n"
+      }
+    ]
+  },
+  {
+    "id": "lifetime",
+    "sources": [
+      "materials/guide/examples/lifetime.c"
+    ],
+    "cases": [
+      {
+        "output": "current=1 total=1\ncurrent=1 total=2\ncurrent=1 total=3\n"
+      }
+    ]
+  },
+  {
+    "id": "records",
+    "sources": [
+      "materials/guide/examples/records.c"
+    ],
+    "cases": [
+      {
+        "output": "start: 2 5\ncopy: 12 5\n"
+      }
+    ]
+  },
+  {
+    "id": "memory",
+    "sources": [
+      "materials/guide/examples/memory.c"
+    ],
+    "cases": [
+      {
+        "output": "0 1 4 9\n"
+      }
+    ]
+  },
+  {
+    "id": "recursion",
+    "sources": [
+      "materials/guide/examples/recursion.c"
+    ],
+    "cases": [
+      {
+        "output": "6\n"
+      }
+    ]
+  },
+  {
+    "id": "bits",
+    "sources": [
+      "materials/guide/examples/bits.c"
+    ],
+    "cases": [
+      {
+        "output": "enabled=1\n"
+      }
+    ]
+  },
+  {
+    "id": "decimals",
+    "sources": [
+      "materials/guide/examples/decimals.c"
+    ],
+    "cases": [
+      {
+        "output": "0.0 0.5\n"
+      }
+    ]
+  },
+  {
+    "id": "preprocessor",
+    "sources": [
+      "materials/guide/examples/preprocessor.c"
+    ],
+    "cases": [
+      {
+        "output": "4\n"
+      }
+    ]
+  },
+  {
+    "id": "modules",
+    "sources": [
+      "materials/guide/examples/modules/program.c",
+      "materials/guide/examples/modules/maximum.c"
+    ],
+    "cases": [
+      {
+        "output": "8\n"
+      }
+    ]
+  },
+  {
+    "id": "genericSwap",
+    "sources": [
+      "materials/guide/examples/genericSwap.c"
+    ],
+    "cases": [
+      {
+        "output": "integers: 3 8\ndoubles: 2.50 1.25\narrays: 4 5 6 | 1 2 3\n"
+      }
+    ]
+  },
+  {
+    "id": "pointerRows",
+    "sources": [
+      "materials/guide/examples/pointerRows.c"
+    ],
+    "cases": [
+      {
+        "output": "4 6\n"
+      }
+    ]
+  },
+  {
+    "id": "selectPointer",
+    "sources": [
+      "materials/guide/examples/selectPointer.c"
+    ],
+    "cases": [
+      {
+        "output": "selected=9 first=4 second=9\n"
+      }
+    ]
+  },
+  {
+    "id": "binaryFraction",
+    "sources": [
+      "materials/guide/examples/binaryFraction.c"
+    ],
+    "cases": [
+      {
+        "output": "5/8: 0.101 (exact)\n1/10: 0.0001100110011001... (remainder=6/10)\n"
+      }
+    ]
+  },
+  {
+    "id": "dynamicBuffer",
+    "sources": [
+      "materials/guide/examples/dynamicBuffer.c"
+    ],
+    "cases": [
+      {
+        "output": "size=1 capacity=2\nsize=2 capacity=2\nsize=3 capacity=4\nsize=4 capacity=4\nsize=5 capacity=8\ndata: 10 20 30 40 50\n"
+      }
+    ]
+  },
+  {
+    "id": "compactString",
+    "sources": [
+      "materials/guide/examples/compactString.c"
+    ],
+    "cases": [
+      {
+        "output": "[Cisfun]\n"
+      }
+    ]
+  },
+  {
+    "id": "structBasics",
+    "sources": [
+      "materials/examples/structBasics.c"
+    ],
+    "cases": [
+      {
+        "output": "after MoveCopy: 2 5\nafter Move: 5 5\nshifted: 15 5\ncopy: 100 5\n"
+      }
+    ]
+  },
+  {
+    "id": "decodeHeader",
+    "sources": [
+      "materials/examples/decodeHeader.c"
+    ],
+    "cases": [
+      {
+        "output": "kind=2 length=0x12345678\n"
+      }
+    ]
+  },
+  {
+    "id": "variableArray",
+    "sources": [
+      "materials/examples/variableArray.c"
+    ],
+    "cases": [
+      {
+        "output": "n=3 last=3\nn=5 last=5\n"
+      }
+    ],
+    "requires_vla": true
+  },
+  {
+    "id": "macros",
+    "sources": [
+      "materials/examples/macros.c"
+    ],
+    "cases": [
+      {
+        "output": "SQUARE_BAD(2 + 3) = 11\n100 / SQUARE_HALF(5) = 100\nSQUARE(2 + 3) = 25\nmacro: result=4 value=5\nfunction: result=3 value=4\nVERSION\n3\nversion_3 = 3\n"
+      }
+    ]
+  },
+  {
+    "id": "stackFrames",
+    "sources": [
+      "materials/examples/stackFrames.c"
+    ],
+    "cases": [
+      {
+        "output": "enter: n=3\nenter: n=2\nenter: n=1\nenter: n=0\nreturn: 0\nreturn: n=1 result=1\nreturn: n=2 result=3\nreturn: n=3 result=6\nsum=6\ncurrent=1 total=1\ncurrent=1 total=2\ncurrent=1 total=3\ninner=21\nouter=10\n"
+      }
+    ]
+  },
+  {
+    "id": "macrosDebug",
+    "sources": [
+      "materials/examples/macros.c"
+    ],
+    "defines": [
+      "DEBUG=1"
+    ],
+    "cases": [
+      {
+        "output": "SQUARE_BAD(2 + 3) = 11\n100 / SQUARE_HALF(5) = 100\nSQUARE(2 + 3) = 25\nmacro: result=4 value=5\nfunction: result=3 value=4\nVERSION\n3\nversion_3 = 3\nvalue = 4\n"
+      }
+    ]
+  },
+  {
+    "id": "structLayout",
+    "sources": [
+      "materials/examples/structLayout.c"
+    ],
+    "math": false,
+    "cases": [
+      {
+        "output_regex": "char: size=1 align=1; int: size=\\d+ align=\\d+\\nTSample: size=\\d+ align=\\d+; kind=0 value=\\d+ status=\\d+\\nTCompactSample: size=\\d+ align=\\d+; kind=\\d+ value=0 status=\\d+\\nTPackedSample: size=\\d+ align=1; kind=0 value=1 status=\\d+\\nTPack2Sample: size=\\d+ align=\\d+; kind=0 value=\\d+ status=\\d+\\n"
+      }
+    ]
+  },
+  {
+    "id": "numberBits",
+    "sources": [
+      "materials/examples/numberBits.c"
+    ],
+    "math": false,
+    "cases": [
+      {
+        "output_regex": "CHAR_BIT=8 sizeof\\(int\\)=\\d+\\nINT_MIN=-\\d+ INT_MAX=\\d+ UINT_MAX=\\d+\\nvalue=0x12345678\\n00010010001101000101011001111000\\n(?:78 56 34 12|12 34 56 78)\\nnegative=-3\\n(?:FD FF FF FF|FF FF FF FD)\\nfloat=13\\.25 bytes: (?:00 00 54 41|41 54 00 00)\\nwrapped=0\\n"
+      }
+    ]
+  },
+  {
+    "id": "floatPrecision",
+    "sources": [
+      "materials/examples/floatPrecision.c"
+    ],
+    "math": true,
+    "cases": [
+      {
+        "output_regex": "radix=2 float digits=24 double digits=53\\nepsilon=2\\.2204460492503131e-16\\nsum=0\\.30000000000000004 equal=0\\n0\\.1 as hex: 0x1\\.999999999999a0*p-0?4\\nexpanded float=0\\.10000000149011612\\nfloat step: 16777216 16777216\\norder: 1 0\\ndivision: 0\\.0 0\\.5\\nclose=1\\nnegative zero: equal=1 sign=1\\n"
+      }
+    ]
+  }
+]

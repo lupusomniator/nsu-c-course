@@ -1,0 +1,20 @@
+{% assign chapter = site.data.course | where: 'id', page.lesson | first %}
+{% if chapter %}
+<nav aria-label="Главы курса" class="mt-8 pt-4 border-top">
+  {% for item in site.data.course %}
+    {% if item.id == page.lesson %}
+      {% unless forloop.first %}
+        {% assign previous_index = forloop.index0 | minus: 1 %}
+        {% assign previous = site.data.course[previous_index] %}
+        <p><a href="{{ previous.url | relative_url }}" rel="prev">← {{ previous.title }}</a></p>
+      {% endunless %}
+      <p><a href="{{ '/' | relative_url }}">Все материалы</a> · <a href="{{ '/materials/glossary/' | relative_url }}">Словарь</a></p>
+      {% unless forloop.last %}
+        {% assign next_index = forloop.index0 | plus: 1 %}
+        {% assign next = site.data.course[next_index] %}
+        <p><a href="{{ next.url | relative_url }}" rel="next">{{ next.title }} →</a></p>
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endif %}
